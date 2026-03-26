@@ -1,0 +1,6 @@
+Gemini Status: 200
+Gemini OK: Found 45 models
+
+HF Free Status: 410
+HF Content-Type: application/json; charset=utf-8
+HF Error: {"error":"https://api-inference.huggingface.co is no longer supported. Please use https://router.huggingface.co instead."}
