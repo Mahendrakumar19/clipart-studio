@@ -25,16 +25,16 @@ async function generateClipart(base64Image, style, opts = {}, attempt = 1) {
 
   const dataUri = `data:image/jpeg;base64,${base64Image}`;
 
-  // Merge custom prompt if provided
+  // Merge custom prompt - style prompt MUST come first for weight
   let positivePrompt = promptData.positive;
   if (opts.customPrompt) {
     positivePrompt = `${positivePrompt}, ${opts.customPrompt}`;
   }
 
-  // Map intensity to ControlNet strength (0.4–0.95 range)
-  const intensity = opts.intensity ?? 0.75;
-  const controlnetStrength = 0.4 + intensity * 0.55; // 0→0.4, 0.5→0.675, 1→0.95
-  const styleStrength = 0.5 + (1 - intensity) * 0.4; // inverse: more stylized at low intensity
+  // Map intensity to ControlNet strength (0.35–0.85 range for more style freedom)
+  const intensity = opts.intensity ?? 0.5;
+  const controlnetStrength = 0.35 + intensity * 0.5; // 0→0.35 (stylized), 0.5→0.6, 1→0.85 (faithful)
+  const styleStrength = 0.6 + (1 - intensity) * 0.3; // inverse: more stylized at low intensity
 
   try {
     const output = await replicate.run(MODEL, {
@@ -43,10 +43,10 @@ async function generateClipart(base64Image, style, opts = {}, attempt = 1) {
         prompt: positivePrompt,
         negative_prompt: promptData.negative,
         num_inference_steps: 30,
-        guidance_scale: 7.5,
+        guidance_scale: 9.5,
         controlnet_conditioning_scale: controlnetStrength,
         strength: styleStrength,
-        scheduler: 'K_EULER_ANCESTRAL',
+        scheduler: 'K_DPMSOLVER_MULTISTEP',
         seed: Math.floor(Math.random() * 999999),
       },
     });

@@ -120,6 +120,12 @@ export default function ResultsScreen() {
   const saveBtnScale = useSharedValue(1);
 
   useEffect(() => {
+    if (!image && availableResults.length === 0) {
+      router.replace('/');
+    }
+  }, [image, availableResults.length]);
+
+  useEffect(() => {
     headerOpacity.value = withTiming(1, { duration: 500 });
     if (!selectedStyle && availableResults.length > 0) {
       setSelectedStyle(availableResults[0].id);

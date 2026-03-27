@@ -45,9 +45,9 @@ async function generateClipart(base64Image, style, preloadedDescription = null, 
     console.log(`[gemini] vision: ${visualDescription}`);
   }
 
-  let finalPrompt = `${promptData.positive}, portrait of ${visualDescription}. Artistic, clean, vibrant, high quality.`;
+  let finalPrompt = `${promptData.positive}. Character portrait based on ${visualDescription}. High quality, clean, professional artwork, masterpiece.`;
   if (opts.customPrompt) {
-    finalPrompt = `${finalPrompt}, ${opts.customPrompt}`;
+    finalPrompt = `${promptData.positive}, ${opts.customPrompt}. Portrait of ${visualDescription}.`;
   }
 
   const encodedPrompt = encodeURIComponent(finalPrompt);

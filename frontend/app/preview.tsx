@@ -103,10 +103,13 @@ export default function PreviewScreen() {
     router.back();
   };
 
-  if (!image) {
-    router.replace('/');
-    return null;
-  }
+  useEffect(() => {
+    if (!image) {
+      router.replace('/');
+    }
+  }, [image]);
+
+  if (!image) return null;
 
   const intensityPercent = Math.round(intensity * 100);
 
@@ -150,7 +153,7 @@ export default function PreviewScreen() {
             {STYLES.map((style) => (
               <Animated.View
                 key={style.id}
-                style={[styles.styleRow, { opacity: contentOpacity.value }]}
+                style={styles.styleRow}
               >
                 <View style={[styles.styleIcon, { backgroundColor: style.bg }]}>
                   <Text style={styles.styleEmoji}>{style.emoji}</Text>

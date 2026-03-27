@@ -3,7 +3,7 @@
 // For production:   deploy backend to Railway/Render and put the URL here
 
 export const API_BASE_URL =
-  process.env.EXPO_PUBLIC_API_URL ?? 'http://10.6.27.202:3001';
+  process.env.EXPO_PUBLIC_API_URL ?? 'https://clipart-studio.onrender.com';
 
 export const GENERATION_TIMEOUT_MS = 180_000; // 3 minutes per style (accounts for cold start + queue)
 

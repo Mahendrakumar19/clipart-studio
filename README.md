@@ -8,6 +8,7 @@ A React Native Android app that turns your photos into clipart. Pick a photo fro
 |----------|------|
 | APK Download | [Google Drive](#) |
 | Screen Recording | [Google Drive](#) |
+| Backend (Live) | [https://clipart-studio.onrender.com](https://clipart-studio.onrender.com) |
 
 ## How to run it locally
 
@@ -45,10 +46,14 @@ npm run dev
 
 ### Frontend
 
-Open `frontend/src/utils/config.ts` and set the API URL to your machine's local IP:
+By default, the app is already configured to talk to the live backend on Render. If you want to test against your local backend, edit `frontend/src/utils/config.ts`:
 
 ```ts
-export const API_BASE_URL = 'http://YOUR_LOCAL_IP:3001';
+// Live (default)
+export const API_BASE_URL = 'https://clipart-studio.onrender.com';
+
+// Local testing
+// export const API_BASE_URL = 'http://YOUR_LOCAL_IP:3001';
 ```
 
 Then start Expo:

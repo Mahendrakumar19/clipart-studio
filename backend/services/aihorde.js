@@ -18,10 +18,10 @@ async function generateClipart(base64Image, style, visualDescription = '', opts 
     combinedPrompt = `${combinedPrompt}, ${opts.customPrompt}`;
   }
 
-  // Map intensity to denoising_strength (lower = more faithful)
+  // Map intensity to denoising_strength (higher = more stylized)
   const denoisingStrength = opts.intensity !== undefined
-    ? 0.3 + (1 - opts.intensity) * 0.5 // 1→0.3 (faithful), 0→0.8 (stylized)
-    : 0.6;
+    ? 0.45 + (1 - opts.intensity) * 0.45 // 1→0.45 (faithful), 0→0.9 (stylized)
+    : 0.65;
 
   console.log(`[aihorde] requesting ${style} (denoising=${denoisingStrength.toFixed(2)})...`);
 
@@ -35,12 +35,12 @@ async function generateClipart(base64Image, style, visualDescription = '', opts 
     body: JSON.stringify({
       prompt: combinedPrompt,
       params: {
-        steps: 20,    
+        steps: 25,    
         n: 1,
         sampler_name: 'k_euler',
         width: 512,
         height: 512,
-        cfg_scale: 7,
+        cfg_scale: 8.5,
         denoising_strength: denoisingStrength,
         karras: true,
       },

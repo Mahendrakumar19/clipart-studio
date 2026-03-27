@@ -204,7 +204,7 @@ const PulsingDot = () => {
 export default function GeneratingScreen() {
   const { image, customPrompt, intensity } = useImageStore();
   const { statuses, progress, isComplete, retryStyle } = useGenerateCliparts(
-    image!,
+    image || '',
     { customPrompt, intensity }
   );
 

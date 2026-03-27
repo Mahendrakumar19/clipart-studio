@@ -43,6 +43,11 @@ app.use(express.json({ limit: '10mb' })); // base64 images can be large
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // ── Routes ───────────────────────────────────────────────────────────────────
+app.get('/', (req, res) => res.json({ 
+  message: 'Clipart Studio API is online',
+  docs: 'https://github.com/mahendrakumar19/clipart-studio',
+  status: 'active'
+}));
 app.get('/health', (req, res) => res.json({ status: 'ok', ts: Date.now() }));
 app.use('/api/generate', generateLimiter, generateRouter);
 
