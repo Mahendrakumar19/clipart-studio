@@ -6,8 +6,8 @@ A React Native Android app that turns your photos into clipart. Pick a photo fro
 
 | Resource | Link |
 |----------|------|
-| APK Download | [Google Drive](#) |
-| Screen Recording | [Google Drive](#) |
+| APK Download | [Google Drive](https://drive.google.com/drive/folders/1EZpGM74IA1a8bUWdQyv41zaLvZmJWl7T?usp=sharing) |
+| Screen Recording | [Google Drive](https://drive.google.com/drive/folders/1EZpGM74IA1a8bUWdQyv41zaLvZmJWl7T?usp=sharing) |
 | Backend (Live) | [https://clipart-studio.onrender.com](https://clipart-studio.onrender.com) |
 
 ## How to run it locally
@@ -194,5 +194,6 @@ clipart-studio/
 
 Pretty cheap overall:
 - Replicate: ~$0.005/image × 5 styles = ~$0.025 per generation
-- Backend hosting: free (Railway starter)
+- Ai Horde: Free (image generation)
+- Backend hosting: free (Render starter)
 - EAS builds: free (30/month)
